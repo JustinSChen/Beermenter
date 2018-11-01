@@ -18,15 +18,27 @@ div.brewery img {
 	max-height:100%;
 	object-fit: contain;
 }
+@font-face {
+    font-family: BrixSansBold;
+    src: url("fonts/Brix Sans Bold.ttf");
+}
 .brewery-header {
-	background-color: lightgray;
+	background-image: linear-gradient(to right, #FFC900 , #D8844F);
 	text-align: center;
 	padding: 10px;
-	margin: 0;
+	margin: 0 !important;
+	color: #252735;
+	font-family: BrixSansBold;
+	font-size: 24pt;
+	font-weight: bold;
 }
-div.beer img {
-	max-width: 5%;
-	max-height: 5%;
+#qm {
+	max-width: 20px;
+	max-height: 20px;
+}
+.beer {
+	max-width: 100px;
+	max-height: 100px;
 }
 #f {
 	max-width: 20%;
@@ -35,6 +47,31 @@ div.beer img {
 	bottom: 0;
 	right: 0;
 }
+.row figure {
+	display: inline-block;
+	max-width: 98%;
+	height: auto;
+	width: 30%;
+	margin: 1%;
+}
+.row {
+	padding-left: 15px;
+}
 figcaption {
-	text-align: center;
+	text-align: left;
+	font-size: 12pt;
+}
+body {
+	background-color: #252735;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+a {
+	color: white;
+}
+.btype {
+	color: white;
+	font-size: 18pt;
+	padding-left: 20px;
 }
