@@ -24,5 +24,17 @@ div.brewery img {
 	padding: 10px;
 	margin: 0;
 }
-div.beer img{
+div.beer img {
+	max-width: 5%;
+	max-height: 5%;
+}
+#f {
+	max-width: 20%;
+	max-height: 20%;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+figcaption {
+	text-align: center;
 }
