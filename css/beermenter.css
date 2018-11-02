@@ -41,11 +41,14 @@ div.brewery img {
 	max-height: 100px;
 }
 #f {
-	max-width: 20%;
-	max-height: 20%;
+	max-width: 17%;
+	max-height: 17%;
 	position: fixed;
+	margin-right: 1em;
+	margin-bottom: 1em;
 	bottom: 0;
 	right: 0;
+
 }
 .row figure {
 	display: inline-block;
