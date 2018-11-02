@@ -1,9 +1,13 @@
 $(document).ready(function() {
 	initializePage();
-})
+	loadNav();
+});
+
+function loadNav(){
+    $("#included_nav").load('navigation.html'); 
+}
 
 function initializePage() {
-
 	$("#locations").change(function () {
 	    var location = document.getElementById("locations");
 		var loc = "." + location.options[location.selectedIndex].value;
