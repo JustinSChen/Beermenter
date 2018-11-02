@@ -1,3 +1,15 @@
+@font-face {
+    font-family: BrixSansBold;
+    src: url("../fonts/Brix Sans Bold.ttf");
+}
+@font-face {
+    font-family: BrixSansMedium;
+    src: url("../fonts/Brix Sans Medium.ttf");
+}
+@font-face {
+    font-family: BrixSansLight;
+    src: url("../fonts/Brix Sans Light.ttf");
+}
 div.brewery-list {
 	width: 100%;
 	overflow: auto;
@@ -13,10 +25,13 @@ div.brewery {
 div.brewery h3 {
 	font-family: BrixSansMedium;
 	font-size: 17px;
+	margin: 0px;
+	font-weight: normal;
 }
 div.brewery p {
 	font-family: BrixSansLight;
 	font-size: 13px;
+	margin: 0px;
 }
 div.brewery a {
 	width: 100%;
@@ -26,10 +41,6 @@ div.brewery img {
 	max-width:100%;
 	max-height:100%;
 	object-fit: contain;
-}
-@font-face {
-    font-family: BrixSansBold;
-    src: url("fonts/Brix Sans Bold.ttf");
 }
 .brewery-header {
 	background-image: linear-gradient(to right, #FFC900 , #D8844F);
