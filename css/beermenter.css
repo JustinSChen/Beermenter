@@ -9,6 +9,15 @@ div.brewery {
 	width: 50%;
 	float: left;
 }
+
+div.brewery h3 {
+	font-family: BrixSansMedium;
+	font-size: 17px;
+}
+div.brewery p {
+	font-family: BrixSansLight;
+	font-size: 13px;
+}
 div.brewery a {
 	width: 100%;
 	height: auto;
@@ -64,17 +73,19 @@ figcaption {
 	text-align: left;
 	font-size: 12pt;
 }
+
 body {
 	background-color: #252735;
 	color: white;
+}
+body.beer-body {
 	margin: 0;
 	padding: 0;
 }
 a {
 	color: white;
 }
-.btype {
+.btype,.brewery-title {
 	color: white;
 	font-size: 18pt;
-	padding-left: 20px;
 }
