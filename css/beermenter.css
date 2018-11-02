@@ -96,7 +96,12 @@ body.beer-body {
 a {
 	color: white;
 }
-.btype,.brewery-title {
+.btype {
+	color: white;
+	font-size: 18pt;
+	padding-left: 20px;
+}
+.brewery-title {
 	color: white;
 	font-size: 18pt;
 }
