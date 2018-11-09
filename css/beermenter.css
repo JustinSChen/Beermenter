@@ -52,15 +52,19 @@ div.brewery img {
 	font-size: 24pt;
 	font-weight: bold;
 }
-#qm {
+.qm {
 	max-width: 20px;
 	max-height: 20px;
+  cursor: pointer;
 }
 .beer {
 	max-width: 100px;
 	max-height: 100px;
 }
-#f {
+img.beer {
+  cursor: pointer;
+}
+#filter {
 	max-width: 17%;
 	max-height: 17%;
 	position: fixed;
@@ -68,7 +72,12 @@ div.brewery img {
 	margin-bottom: 1em;
 	bottom: 0;
 	right: 0;
-
+  cursor: pointer;
+}
+.figcaption {
+  line-height: 2.5ex;
+  height: 7.5ex; /* 2.5ex for each visible line */
+  overflow: hidden;
 }
 .row figure {
 	display: inline-block;
@@ -76,9 +85,11 @@ div.brewery img {
 	height: auto;
 	width: 30%;
 	margin: 1%;
+  font-family: BrixSansLight;
 }
 .row {
 	padding-left: 15px;
+  //display: inline;
 }
 figcaption {
 	text-align: left;
@@ -100,8 +111,239 @@ a {
 	color: white;
 	font-size: 18pt;
 	padding-left: 20px;
+  font-family: BrixSansBold;
 }
 .brewery-title {
 	color: white;
-	font-size: 18pt;
+	font-size: 28px;
+  font-family: BrixSansBold;
+  font-weight: normal;
 }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #363732;
+    margin-top: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 5%;
+    border: 0px solid #888;
+    height: 65%;
+    border-radius: 10px;
+}
+/* The Close Button */
+.close,.qclose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.qclose:hover,
+.qclose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+#finish{
+  margin-top: 80%;
+  margin-right: 0;
+  margin-left: 35%;
+  background-image: linear-gradient(to right, #FFC900 , #D8844F);
+  border-radius: 5px;
+  color: white;
+  border: none;
+  height: 35px;
+  width: 100px;
+  position: absolute;
+  font-size: 17px;
+  font-family: BrixSansBold;
+  top: 33%;
+  left: 18%;
+  right: 0;
+}
+details {
+  margin-bottom: 90px;
+}
+details summary::-webkit-details-marker {
+  display:none;
+}
+summary {
+  font-size: 28px;
+  font-family: BrixSansBold;
+  white-space: nowrap;
+  cursor: pointer;
+}
+#border {
+  max-width: 100%;
+}
+div label input {
+   margin-right:100px;
+}
+.ck-button {
+    background-color:#252735;
+    border-radius:15px;
+    border: 1px solid #FFC900;
+    overflow:auto;
+    float:left;
+    color: #FFC900;
+    font-size: 12pt;
+    margin: 1px;
+    padding: 0;
+    font-family: BrixSansLight;
+}
+.ck-button label {
+    float:left;
+    width:4.0em;
+    padding: 0;
+}
+.ck-button label span {
+    text-align:center;
+    display:block;
+    padding: 0;
+}
+.ck-button label input {
+    position:absolute;
+    top:-20px;
+    padding: 0;
+}
+.ck-button input:checked + span {
+    background-color:#FFC900;
+    color: #252735;
+    padding: 0;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #010;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    white-space: nowrap;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: BrixSansMedium;
+    font-size: 17px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .close-nav {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.open-nav {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.textfield {
+  width: 100%;
+  padding: 8px 8px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #818181;
+  background-color: transparent;
+  color: white;
+  font-size: 17px;
+  font-family: BrixSansLight;
+}
+
+select {
+  width: 100%;
+  padding: 8px 8px;
+  border: none;
+  border-bottom: 1px solid white;
+  //border-radius: 4px;
+  background-color: transparent;//#f1f1f1;
+  color: white;
+  font-size: 17px;
+}
+
+select option {
+  color: #252735;
+  font-weight: bold;
+}
+
+.index-body {
+  padding: 36px;
+}
+
+.brewery-body {
+  padding: 8px;
+}
+
+.div-btn {
+  cursor: pointer;
+}
+
+#login-signup-btn {
+  background-image: linear-gradient(to right, #FFC900 , #D8844F);
+  text-align: center;
+  padding: 10px;
+  margin: 30px 0px;
+  color: white;
+  font-family: BrixSansMedium;
+  font-size: 17px;
+  font-weight: normal;
+  border-radius: 4px;
+}
+
+.switch-mode {
+  text-align: center;
+  color: #FFC900;
+  font-family: BrixSansMedium;
+  font-size: 17px;
+  display: inline-block;
+}
+
+.index-title {
+  text-align: center;
+  color: #FFC900;
+  font-family: BrixSansBold;
+  font-size: 27px;
+  margin: 16px;
+}
+
+img.logo {
+  margin: 8px auto 8px auto;
+  display: block;
+  width: 50%;
+}
+

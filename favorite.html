@@ -3,30 +3,321 @@
   <head>
     <title>Beermenter</title>
     <link rel="icon" href="img/favicon.ico">
-    <base href="https://justinschen.github.io/Beermenter/" />
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/beermenter.css">
+    <link rel="stylesheet" href="css/beerinfo.css">
     <!--
     <link rel="shortcut icon" href="assets/img/icon.png" />
     <link rel="stylesheet" type="text/css" href="css/under_dev.css">
     -->
   </head>
 
-  <body>
-    <header>
-      <h1>Favorite page</h1>
-    </header>
-    <hr/>
-    
-    <nav>
-        <ul>
-          <li><a href="breweries.html">Choose A Brewery</a></li>
-          <li><a href="brewery_main.html">Brewery Main Page</a></li>
-          <li><a href="filter.html">Filters</a></li>
-          <li><a href="beer.html">Beer Info Page</a></li>
-          <li><a href="favorite.html">Favorite Page</a></li>
-          <li><a href="index.html">Log out</a></li>
-        </ul>
-    </nav>
+  <body class="beer-body" style="display: none">
+      <header>
+        <p class="brewery-header">My Favorites</p>
+      </header>
+
+        <p class="btype">Rich and Malty <sup><img class="qm" id="qm1" src="img/question.png" alt="Information"></sup></p>
+
+        <div class="category">
+          <div class="filterDiv ipa beer fruity hop test"  style="display: none">
+            <figure>
+              <img id="beer1" class="beer" src="img/ballastpoint/rich-malty/01-sculpin-ipa.png" alt="Name of Beer">
+              <figcaption>Sculpin IPA</figcaption>
+            </figure>
+          </div>
+          <div class="filterDiv ipa beer crisp hop test">
+            <figure>
+              <img id="beer2" class="beer" src="img/ballastpoint/rich-malty/02-manta-ray-ipa.png" alt="Name of Beer">
+              <figcaption>Manta Ray IPA</figcaption>
+            </figure>
+          </div>
+          <div class="filterDiv ipa beer fruity hop test">
+            <figure>
+              <img id="beer3" class="beer" src="img/ballastpoint/rich-malty/03-fathom-ipa.png" alt="Name of Beer">
+              <figcaption>Fathom IPA</figcaption>
+            </figure>
+          </div>
+          <div class="filterDiv ipa beer fruity hop test">
+            <figure>
+              <img id="beer4" class="beer" src="img/ballastpoint/rich-malty/04-gf-sculpin-ipa.png" alt="Name of Beer">
+              <figcaption>GF Sculpin IPA</figcaption>
+            </figure>
+          </div>
+          <div class="filterDiv ipa beer fruity hop test">
+            <figure>
+              <img id="beer5" class="beer" src="img/ballastpoint/rich-malty/05-melon-dorado.png" alt="Name of Beer">
+              <figcaption>Melon Dorado</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <p class="btype">Crisp and Bright <sup><img class="qm" id="qm2" src="img/question.png" alt="Information"></sup></p>
+
+        <div class="category">
+          <div class="filterDiv lager beer hop malt test">
+            <figure>
+              <img id="beer6" class="beer" src="img/ballastpoint/crisp-clear/01-longfin-lager.png" alt="Name of Beer">
+              <figcaption>Longfin Lager</figcaption>
+            </figure>
+          </div>
+          <div class="filterDiv kolsch beer crisp fruity tart test">
+            <figure>
+              <img id="beer7" class="beer" src="img/ballastpoint/crisp-clear/02-ca-kolsch.png" alt="Name of Beer">
+              <figcaption>CA Kölsch</figcaption>
+            </figure>
+          </div>
+          <div class="filterDiv beer crisp malt test">
+            <figure>
+              <img id="beer8" class="beer" src="img/ballastpoint/crisp-clear/03-bb.png" alt="Name of Beer">
+              <figcaption>Bonito Blonde</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <p class="btype">Hops & More Hops <sup><img class="qm" id="qm3" src="img/question.png" alt="Information"></sup></p>
+
+        <div class="category">
+          <div class="filterDiv kolsch beer crisp fruity tart test">
+            <figure>
+              <img id="beer9" class="beer" src="img/ballastpoint/other/kolsch-tpk.png" alt="Name of Beer">
+              <figcaption>Tart Peach Kolsch</figcaption>
+            </figure>
+          </div>
+        </div>
+
+      <div id="infoModal1" class="beer-info-modal">
+        <div class="beer-modal-content">
+          <span class="close">&times;</span>
+          <img class="beerinfo" src="img/ballastpoint/rich-malty/01-sculpin-ipa.png" alt="Name of Beer">
+          <p class="beername">Aloha Sculpin IPA</p>
+          <p class="beertype">Indian Pale Ale</p>
+          <p class="abv">7.0% Alcohol Content</p>
+          <p class="beerdesc">A hazy IPA with noles of guava and pineapple.</p>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Fruity</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Bitter</span>
+            </label>
+          </div>
+          <a class="fav-btn"></a>
+        </div>
+      </div>
+      <div id="infoModal2" class="beer-info-modal">
+        <div class="beer-modal-content">
+          <span class="close">&times;</span>
+          <img class="beerinfo" src="img/ballastpoint/rich-malty/02-manta-ray-ipa.png" alt="Name of Beer">
+          <p class="beername">Manta Ray IPA</p>
+          <p class="beertype">Indian Pale Ale</p>
+          <p class="abv">8.5% Alcohol Content</p>
+          <p class="beerdesc">Light and dry on palate with big, hoppy flavor</p>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Crisp</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Hop</span>
+            </label>
+          </div>
+          <a class="fav-btn"></a>
+        </div>
+      </div>
+      <div id="infoModal3" class="beer-info-modal">
+        <div class="beer-modal-content">
+          <span class="close">&times;</span>
+          <img class="beerinfo" src="img/ballastpoint/rich-malty/03-fathom-ipa.png" alt="Name of Beer">
+          <p class="beername">Fathom IPA</p>
+          <p class="beertype">Indian Pale Ale</p>
+          <p class="abv">6.6% Alcohol Content</p>
+          <p class="beerdesc">IPA with hints of citrus and pine</p>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Fruity</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Hop</span>
+            </label>
+          </div>
+          <a class="fav-btn"></a>
+        </div>
+      </div>
+      <div id="infoModal4" class="beer-info-modal">
+        <div class="beer-modal-content">
+          <span class="close">&times;</span>
+          <img class="beerinfo" src="img/ballastpoint/rich-malty/04-gf-sculpin-ipa.png" alt="Name of Beer">
+          <p class="beername">Grapefruit Sculpin IPA</p>
+          <p class="beertype">Indian Pale Ale</p>
+          <p class="abv">8.5% Alcohol Content</p>
+          <p class="beerdesc">Signature IPA with bright, grapefruit punch</p>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Fruity</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Hop</span>
+            </label>
+          </div>
+          <a class="fav-btn"></a>
+        </div>
+      </div>
+      <div id="infoModal5" class="beer-info-modal">
+        <div class="beer-modal-content">
+          <span class="close">&times;</span>
+          <img class="beerinfo" src="img/ballastpoint/rich-malty/05-melon-dorado.png" alt="Name of Beer">
+          <p class="beername">Watermelon Dorado</p>
+          <p class="beertype">Indian Pale Ale</p>
+          <p class="abv">8.5% Alcohol Content</p>
+          <p class="beerdesc">Double IPA with refreshing watermelon</p>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Fruity</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Hop</span>
+            </label>
+          </div>
+          <a class="fav-btn"></a>
+        </div>
+      </div>
+      <div id="infoModal6" class="beer-info-modal">
+        <div class="beer-modal-content">
+          <span class="close">&times;</span>
+          <img class="beerinfo" src="img/ballastpoint/crisp-clear/01-longfin-lager.png" alt="Name of Beer">
+          <p class="beername">Longfin Lager</p>
+          <p class="beertype">Lager</p>
+          <p class="abv">5.2% Alcohol Content</p>
+          <p class="beerdesc">A traditional Helles style lager that is light and refreshing</p>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Crisp</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Malt</span>
+            </label>
+          </div>
+          <a class="fav-btn"></a>
+        </div>
+      </div>
+      <div id="infoModal7" class="beer-info-modal">
+        <div class="beer-modal-content">
+          <span class="close">&times;</span>
+          <img class="beerinfo" src="img/ballastpoint/crisp-clear/02-ca-kolsch.png" alt="Name of Beer">
+          <p class="beername">California Kolsch</p>
+          <p class="beertype">Kolsch</p>
+          <p class="abv">5.2% Alcohol Content</p>
+          <p class="beerdesc">Kolsch style, light but complex with subdued fruitiness</p>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Crisp</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Fruity</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Tart</span>
+            </label>
+          </div>
+          <a class="fav-btn"></a>
+        </div>
+      </div>
+      <div id="infoModal8" class="beer-info-modal">
+        <div class="beer-modal-content">
+          <span class="close">&times;</span>
+          <img class="beerinfo" src="img/ballastpoint/crisp-clear/03-bb.png" alt="Name of Beer">
+          <p class="beername">Bonito Blonde</p>
+          <p class="beertype">Blonde Ale</p>
+          <p class="abv">4.5% Alcohol Content</p>
+          <p class="beerdesc">An American blonde ale w/ soft malt notes and slight yeast character</p>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Crisp</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Malt</span>
+            </label>
+          </div>
+          <a class="fav-btn"></a>
+        </div>
+      </div>
+      <div id="infoModal9" class="beer-info-modal">
+        <div class="beer-modal-content">
+          <span class="close">&times;</span>
+          <img class="beerinfo" src="img/ballastpoint/other/kolsch-tpk.png" alt="Name of Beer">
+          <p class="beername">Tart Peach Kolsch</p>
+          <p class="beertype">Kolsch</p>
+          <p class="abv">5.2% Alcohol Content</p>
+          <p class="beerdesc">Hints of ripe peach with a refreshing tart finish</p>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Crisp</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Fruity</span>
+            </label>
+          </div>
+          <div class="trait">
+            <label>
+              <input type="checkbox" value="1"><span>Tart</span>
+            </label>
+          </div>
+          <a class="fav-btn"></a>
+        </div>
+      </div>
+
+      <div id="qModal1" class="qmodal">
+        <div class="qcontent">
+          <span class="qclose">&times;</span>
+          <p>Characterized by their aroma and bitterness derived from the addition of hops. Hops are flowers that are used in brewing beer, adding a floral bitterness.</p>
+        </div>
+      </div>
+      <div id="qModal2" class="qmodal">
+        <div class="qcontent">
+          <span class="qclose">&times;</span>
+          <p>Fermented low and slow. Lagers are characterized by a much milder hop taste as well as more bready, almost biscuity flavor. </p>
+        </div>
+      </div>
+      <div id="qModal3" class="qmodal">
+        <div class="qcontent">
+          <span class="qclose">&times;</span>
+          <p>A creamy, toasty flavor with little to no hop aroma. These brews employ roasted malts grains and have and rich dark color.</p>
+        </div>
+      </div>
+
+    <hr />
+
+    <div class="sidenav">
+      <a href="#!" class="close-nav">&times;</a>
+      <a href="breweries.html">Choose A Brewery</a>
+      <a href="brewery_main.html">Brewery Main Page</a>
+      <a href="favorite.html">Favorite Page</a>
+      <a href="index.html">Log out</a>
+    </div>
+    <a class="open-nav">&#9776; menu</a>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="js/favorite.js"></script>
   </body>
 </html>
