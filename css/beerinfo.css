@@ -127,6 +127,7 @@ figure {
 
 .filterDiv {
   display: inline-block;
+  margin-right: 15px;
 }
 .show {
   display: inline-block;
@@ -188,7 +189,7 @@ p.info{
   background-position: center;
   margin-right: 16px;
   margin-bottom: 16px;
-  position: absolute; 
+  position: absolute;
   right: 0;
   bottom: 0;
   cursor: pointer;

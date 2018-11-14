@@ -1,4 +1,125 @@
 $(document).ready(function() {
+	beers = [
+		{name: 'Aloha Sculpin',
+		img: 'img/ballastpoint/rich-malty/01-sculpin-ipa.png',
+		style: 'ipa',
+		abv: '7.0',
+		info: 'A hazy IPA with noles of guava and pineapple',
+		traits: ['fruity','bitter']
+		},
+		{name: 'Manta Ray',
+		img: 'img/ballastpoint/rich-malty/02-manta-ray-ipa.png',
+		style: 'ipa',
+		abv: '8.5',
+		info: 'Light and dry on palate with big, hoppy flavor',
+		traits: ['crisp','hop']
+		},
+		{name: 'Fathom',
+		img: 'img/ballastpoint/rich-malty/03-fathom-ipa.png',
+		style: 'ipa',
+		abv: '6.6',
+		info: 'IPA with hints of citrus and pine',
+		traits: ['fruity','hop']
+		},
+		{name: 'Grapefruit Sculpin',
+		img: 'img/ballastpoint/rich-malty/04-gf-sculpin-ipa.png',
+		style: 'ipa',
+		abv: '8.5',
+		info: 'Signature IPA with bright, grapefruit punch',
+		traits: ['fruity','hop']
+		},
+		{name: 'Watermelon Dorado',
+		img: 'img/ballastpoint/rich-malty/05-melon-dorado.png',
+		style: 'ipa',
+		abv: '8.5',
+		info: 'Double IPA with refreshing watermelon',
+		traits: ['fruity','hop']
+		},
+		{name: 'Longfin Lager',
+		img: 'img/ballastpoint/crisp-clear/01-longfin-lager.png',
+		style: 'lager',
+		abv: '5.2',
+		info: 'A traditional Helles style lager that is light and refreshing',
+		traits: ['crisp','malt']
+		},
+		{name: 'Dead Ringer',
+		img: 'img/ballastpoint/crisp-clear/02-ca-kolsch.png',
+		style: 'lager',
+		abv: '5.8',
+		info: 'Oktoberfest lager inspired by traditional Marren style',
+		traits: ['crisp','malt']
+		},
+		{name: 'California Kolsch',
+		img: 'img/ballastpoint/other/kolsch-tpk.png',
+		style: 'kolsch',
+		abv: '5.2',
+		info: 'Kolsch style, light but complex with subdued fruitiness',
+		traits: ['crisp','fruity','tart']
+		},
+		{name: 'Tart Peach Kolsch',
+		img: 'img/ballastpoint/other/kolsch-tpk.png',
+		style: 'kolsch',
+		abv: '5.2',
+		info: 'Hints of ripe peach with a refreshing tart finish',
+		traits: ['crisp','fruity','tart']
+		},
+		{name: 'Victory at Sea',
+		img: 'img/ballastpoint/other/porter-vas.png',
+		style: 'porter',
+		abv: '10',
+		info: 'Imperial Porter with Cafe Calabria coffee vanilla',
+		traits: ['malt','roasted']
+		},
+		{name: 'Victory at Sea PB',
+		img: 'img/ballastpoint/other/porter-vasp.png',
+		style: 'porter',
+		abv: '10',
+		info: 'Imperial Porter with peanuts',
+		traits: ['malt','roasted','smoky']
+		},
+		{name: 'Bonito Blonde',
+		img: 'img/ballastpoint/rich-malty/02-manta-ray-ipa.png',
+		style: 'blonde',
+		abv: '4.5',
+		info: 'An American blonde ale w/ soft malt notes and slight yeast character',
+		traits: ['crisp','malt']
+		},
+	];
+
+	var beerID = 0;
+	for (b in beers) {
+		var filters = "";
+		for (t in beers[b].traits) {
+			filters += " " + beers[b].traits[t];
+		}
+		$('#' + beers[b].style + 'section').append('<div class="filterDiv beer' + filters + '"><figure><img ' + 'id="beer' + beerID + '" class="beer" src="' + beers[b].img + '" alt="Name of Beer"><figcaption>' + beers[b].name + '</figcaption></figure></div></div>');
+		beerID += 1;
+	}
+
+	for (var x = 0; x < beerID; x++) {
+		var bstyle;
+		if (beers[x].style == 'ipa') {
+			bstyle = 'India Pale Ale';
+		}
+		if (beers[x].style == 'lager') {
+			bstyle = 'Lager';
+		}
+		if (beers[x].style == 'kolsch') {
+			bstyle = 'Kolsch';
+		}
+		if (beers[x].style == 'porter') {
+			bstyle = 'Porter';
+		}
+		if (beers[x].style == 'blonde') {
+			bstyle = 'Blonde';
+		}
+		$('#modals').append('<div id="infoModal' + x + '" class="beer-info-modal"><div class="beer-modal-content"><span class="close">&times;</span><img class="beerinfo" src="' + beers[x].img + '" alt="' + beers[x].name + '"><p class="beername">' + beers[x].name + '</p><p class="beertype">' + bstyle + '</p><p class="abv">' + beers[x].abv + '% Alcohol Content</p><p class="beerdesc">' + beers[x].info + '</p><div id="traits' + x + '"></div><a class="fav-btn"></a></div></div>');
+
+		for (var t = 0; t < beers[x].traits.length; t++) {
+			$("#traits" + x).append('<div class="trait"><label><input type="checkbox" value="1"><span>' + beers[x].traits[t] + '</span></label></div>');
+		}
+	}
+
 	initializePage();
   loadFavorite();
 });
@@ -20,6 +141,7 @@ function loadFavorite() {
 }
 
 function initializePage() {
+
 	$('input').click(function() {
     var category = $(this).val();
 
@@ -43,7 +165,7 @@ function initializePage() {
   $(".fav-btn").click(function() {
     var beer_id = $(this).parent().parent().attr('id'); //qm1
     var beer_num = beer_id[beer_id.length - 1];
-          
+
     var user = localStorage.getItem("currentUser");
     var allfavlist = localStorage.getItem("favorite"); //will be JSON later
     var favlist = [];
@@ -51,7 +173,7 @@ function initializePage() {
       allfavlist = JSON.parse(allfavlist);
       if (allfavlist[user])
         favlist = allfavlist[user];
-    }   
+    }
     else {
       allfavlist = {};
     }
@@ -69,154 +191,31 @@ function initializePage() {
     localStorage.setItem("favorite", JSON.stringify(allfavlist));
   });
 
-    /*        var modal = document.getElementById("myModal");
-        var button = document.getElementById("filter");
-        var span = document.getElementsByClassName("close")[0];
-        button.onclick = function() {
-          modal.style.display = "block";
-        }
-        span.onclick = function() {
-          modal.style.display = "none";
-        }
-*/
-        $("#filter").click(function() {
-          $("#myModal").fadeIn();
-        });
-        $("#finish").click(function() {
-          $("#myModal").fadeOut();
-        });
+  $("#filter").click(function() {
+    $("#myModal").fadeIn();
+  });
+  $("#finish").click(function() {
+    $("#myModal").fadeOut();
+  });
 
 
-        $(".qm").click(function() {
-          var qm_id = $(this).attr('id'); //qm1
-          var qmodal_id = "#qModal" + qm_id[qm_id.length - 1];
-          $(qmodal_id).fadeIn();
-        });
-        $(".qclose").click(function() {
-          $(this).parent("div").parent("div").fadeOut();
-        });
-/*
-        var qmodal1 = document.getElementById("qModal1");
-        var qbutton1 = document.getElementById("qm1");
-        var qspan1 = document.getElementsByClassName("qclose")[0];
-        qbutton1.onclick = function() {
-          qmodal1.style.display = "block";
-        }
-        qspan1.onclick = function() {
-          qmodal1.style.display = "none";
-        }
-        var qmodal2 = document.getElementById("qModal2");
-        var qbutton2 = document.getElementById("qm2");
-        var qspan2 = document.getElementsByClassName("qclose")[1];
-        qbutton2.onclick = function() {
-          qmodal2.style.display = "block";
-        }
-        qspan2.onclick = function() {
-          qmodal2.style.display = "none";
-        }
-        var qmodal3 = document.getElementById("qModal3");
-        var qbutton3 = document.getElementById("qm3");
-        var qspan3 = document.getElementsByClassName("qclose")[2];
-        qbutton3.onclick = function() {
-          qmodal3.style.display = "block";
-        }
-        qspan3.onclick = function() {
-          qmodal3.style.display = "none";
-        }
-*/
-        $("img.beer").click(function() {
-          var beer_id = $(this).attr('id'); //qm1
-          var infomodal_id = "#infoModal" + beer_id[beer_id.length - 1];
-          $(infomodal_id).fadeIn();
-        });
-        $("div.beer-info-modal div .close").click(function() {
-          $(this).parent("div").parent("div").fadeOut();
-        });
-/*
-        var bmodal1 = document.getElementById("infoModal1");
-        var bimage1 = document.getElementById("beer1");
-        var span1 = document.getElementsByClassName("close")[1];
-        bimage1.onclick = function() {
-          bmodal1.style.display = "block";
-        }
-        span1.onclick = function() {
-          bmodal1.style.display = "none";
-        }
+  $(".qm").click(function() {
+    var qm_id = $(this).attr('id'); //qm1
+    var qmodal_id = "#qModal" + qm_id[qm_id.length - 1];
+    $(qmodal_id).fadeIn();
+  });
+  $(".qclose").click(function() {
+    $(this).parent("div").parent("div").fadeOut();
+  });
 
-        var bmodal2 = document.getElementById("infoModal2");
-        var bimage2 = document.getElementById("beer2");
-        var span2 = document.getElementsByClassName("close")[2];
-        bimage2.onclick = function() {
-          bmodal2.style.display = "block";
-        }
-        span2.onclick = function() {
-          bmodal2.style.display = "none";
-        }
-        var bmodal3 = document.getElementById("infoModal3");
-        var bimage3 = document.getElementById("beer3");
-        var span3 = document.getElementsByClassName("close")[3];
-        bimage3.onclick = function() {
-          bmodal3.style.display = "block";
-        }
-        span3.onclick = function() {
-          bmodal3.style.display = "none";
-        }
-        var bmodal4 = document.getElementById("infoModal4");
-        var bimage4 = document.getElementById("beer4");
-        var span4 = document.getElementsByClassName("close")[4];
-        bimage4.onclick = function() {
-          bmodal4.style.display = "block";
-        }
-        span4.onclick = function() {
-          bmodal4.style.display = "none";
-        }
-        var bmodal5 = document.getElementById("infoModal5");
-        var bimage5 = document.getElementById("beer5");
-        var span5 = document.getElementsByClassName("close")[5];
-        bimage5.onclick = function() {
-          bmodal5.style.display = "block";
-        }
-        span5.onclick = function() {
-          bmodal5.style.display = "none";
-        }
-        var bmodal6 = document.getElementById("infoModal6");
-        var bimage6 = document.getElementById("beer6");
-        var span6 = document.getElementsByClassName("close")[6];
-        bimage6.onclick = function() {
-          bmodal6.style.display = "block";
-        }
-        span6.onclick = function() {
-          bmodal6.style.display = "none";
-        }
-        var bmodal7 = document.getElementById("infoModal7");
-        var bimage7 = document.getElementById("beer7");
-        var span7 = document.getElementsByClassName("close")[7];
-        bimage7.onclick = function() {
-          bmodal7.style.display = "block";
-        }
-        span7.onclick = function() {
-          bmodal7.style.display = "none";
-        }
-        var bmodal8 = document.getElementById("infoModal8");
-        var bimage8 = document.getElementById("beer8");
-        var span8 = document.getElementsByClassName("close")[8];
-        bimage8.onclick = function() {
-          bmodal8.style.display = "block";
-        }
-        span8.onclick = function() {
-          bmodal8.style.display = "none";
-        }
-        var bmodal9 = document.getElementById("infoModal9");
-        var bimage9 = document.getElementById("beer9");
-        var span9 = document.getElementsByClassName("close")[9];
-        bimage9.onclick = function() {
-          bmodal9.style.display = "block";
-        }
-        span9.onclick = function() {
-          bmodal9.style.display = "none";
-        }
-
-        */
+  $("img.beer").click(function() {
+    var beer_id = $(this).attr('id'); //qm1
+    var infomodal_id = "#infoModal" + beer_id[beer_id.length - 1];
+    $(infomodal_id).fadeIn();
+  });
+  $("div.beer-info-modal div .close").click(function() {
+    $(this).parent("div").parent("div").fadeOut();
+  });
 
 	$(".open-nav").click(function () {
 		console.log("Hi");
