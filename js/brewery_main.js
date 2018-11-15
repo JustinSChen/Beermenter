@@ -15,7 +15,7 @@ function loadBeerData() {
   if (curBrewery in allbeer) {
     beers = allbeer[curBrewery]
   }
-  else if (curBrewery == 'Duck Foot' || curBrewery == 'UCI Brewery' || curBrewery == 'San Diego Brewery'){
+  else if (curBrewery == 'Duck Foot' || 'UCI Brewery' || 'San Diego Brewery' || 'Mike Hess' || 'New York Brewery'){
     beers = allbeer['Green Flash']
   }
 
@@ -108,7 +108,9 @@ function initializePage() {
     if (curBrewery in allbeer) {
       beers = allbeer[curBrewery]
     }
-    else if (curBrewery == 'Duck Foot' || curBrewery == 'UCI Brewery' || curBrewery == 'San Diego Brewery'){
+    else if (curBrewery == 'Duck Foot' || curBrewery == 'UCI Brewery' ||
+             curBrewery == 'San Diego Brewery' ||
+             curBrewery == 'Mike Hess' || curBrewery == 'New York Brewery'){
       beers = allbeer['Green Flash']
     }
 
@@ -118,6 +120,7 @@ function initializePage() {
         if ($('#f' + fn).is(":checked")) {
           if ($('#b' + beers[b].id).hasClass($('#f' + fn).val())) {
             // do nothing
+            console.log(beers[b].id);
           }
           else {
             show = 0;
