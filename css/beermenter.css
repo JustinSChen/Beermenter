@@ -274,7 +274,7 @@ div label input {
   top: 10px;
   left: 10px;
   overflow-y: auto;
-
+  z-index: 1;
 }
 
 .textfield {

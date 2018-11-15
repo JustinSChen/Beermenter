@@ -64,8 +64,8 @@ function loadFavoriteBeers() {
 function initializePage() {
 
 	$(".fav-btn").click(function() {
-	    var beer_id = $(this).parent().parent().attr('id'); //qm1
-	    var beer_num = beer_id[beer_id.length - 1];
+	    var beer_id = $(this).parent().parent().attr('id').replace(/[^\d]/g, ''); //qm1
+	    var beer_num = beer_id;
 	          
 	    var user = localStorage.getItem("currentUser");
 	    var allfavlist = localStorage.getItem("favorite"); //will be JSON later
@@ -94,8 +94,8 @@ function initializePage() {
 
 
     $(".qm").click(function() {
-        var qm_id = $(this).attr('id'); //qm1
-        var qmodal_id = "#qModal" + qm_id[qm_id.length - 1];
+        var qm_id = $(this).attr('id').replace(/[^\d]/g, ''); //qm1
+        var qmodal_id = "#qModal" + qm_id;
         $(qmodal_id).fadeIn();
     });
     
@@ -104,8 +104,8 @@ function initializePage() {
     });
 
     $("img.beer").click(function() {
-        var beer_id = $(this).attr('id'); //qm1
-        var infomodal_id = "#infoModal" + beer_id[beer_id.length - 1];
+        var beer_id = $(this).attr('id').replace(/[^\d]/g, ''); //qm1
+        var infomodal_id = "#infoModal" + beer_id;
         $(infomodal_id).fadeIn();
     });
 

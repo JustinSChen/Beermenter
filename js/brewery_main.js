@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 function loadBeerData() {
-  $(".brewery-header").text(localStorage.getItem('currentBrewery'));
+  
   var beerID = 0;
   for (b in beers) {
     var filters = "";
