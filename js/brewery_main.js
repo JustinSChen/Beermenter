@@ -23,9 +23,10 @@ function loadBeerData() {
     var filters = "";
     for (t in beers[b].traits) {
       filters += " " + beers[b].traits[t];
+      filters += " " + beers[b].style;
     }
     $('#' + beers[b].style + 'section').append(
-      '<div class="filterDiv beer' + filters + '">' +
+      '<div id="b' + beers[b].id +'" class="filterDiv beer' + filters + '">' +
         '<figure>' +
           '<img ' + 'id="beer' + beers[b].id + '" class="beer" src="' + beers[b].img + '" alt="Name of Beer">' +
           '<figcaption>' + beers[b].name + '</figcaption>' +
@@ -53,15 +54,15 @@ function loadBeerData() {
     }
     $('#modals').append(
       '<div id="infoModal' + beers[x].id + '" class="beer-info-modal">' +
-        '<div class="beer-modal-content">' + 
-          '<span class="close">&times;</span>' + 
-          '<img class="beerinfo" src="' + beers[x].img + '" alt="' + beers[x].name + '">' + 
+        '<div class="beer-modal-content">' +
+          '<span class="close">&times;</span>' +
+          '<img class="beerinfo" src="' + beers[x].img + '" alt="' + beers[x].name + '">' +
           '<p class="beername">' + beers[x].name + '</p>' +
           '<p class="beertype">' + bstyle + '</p>' +
           '<p class="abv">' + beers[x].abv + '% Alcohol Content</p>' +
           '<p class="beerdesc">' + beers[x].info + '</p>' +
           '<div id="traits' + beers[x].id + '"></div>' +
-          '<a class="fav-btn"></a>' + 
+          '<a class="fav-btn"></a>' +
         '</div>' +
       '</div>'
     );
@@ -98,7 +99,38 @@ function loadFavorite() {
 function initializePage() {
 
   $('input').click(function() {
-    var category = $(this).val();
+    var curBrewery = localStorage.getItem('currentBrewery');
+    if (!curBrewery) {
+      curBrewery = 'Ballast Point Brewing Co.';
+    }
+
+    var beers = ['Ballast Point Brewing Co.']
+    if (curBrewery in allbeer) {
+      beers = allbeer[curBrewery]
+    }
+    else if (curBrewery == 'Duck Foot' || curBrewery == 'UCI Brewery' || curBrewery == 'San Diego Brewery'){
+      beers = allbeer['Green Flash']
+    }
+
+    for (b in beers) {
+      var show = 1;
+      for (var fn = 0; fn < 12; fn ++) {
+        if ($('#f' + fn).is(":checked")) {
+          if ($('#b' + b).hasClass($('#f' + fn).val())) {
+            // do nothing
+          }
+          else {
+            show = 0;
+          }
+        }
+      }
+      if (show) {
+        $('#b' + b).css("display", "inline-block");
+      } else {
+        $('#b' + b).css("display", "none");
+      }
+    }
+    /*var category = $(this).val();
 
     var matchedItems = $('.' + category).each(function () {
       var anyChecked = false;
@@ -114,7 +146,7 @@ function initializePage() {
       }
       if (! anyChecked) $(this).hide();
       else $(this).show();
-    });
+    });*/
   });
 
   $(".fav-btn").click(function() {
@@ -183,5 +215,5 @@ function initializePage() {
 
   $("header p").click(function () {
       window.location.href = "https://maps.google.com/?q=" + $(this).text();
-  }); 
+  });
 }
