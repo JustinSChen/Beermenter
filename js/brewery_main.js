@@ -116,7 +116,7 @@ function initializePage() {
       var show = 1;
       for (var fn = 0; fn < 12; fn ++) {
         if ($('#f' + fn).is(":checked")) {
-          if ($('#b' + b).hasClass($('#f' + fn).val())) {
+          if ($('#b' + beers[b].id).hasClass($('#f' + fn).val())) {
             // do nothing
           }
           else {
@@ -125,9 +125,9 @@ function initializePage() {
         }
       }
       if (show) {
-        $('#b' + b).css("display", "inline-block");
+        $('#b' + beers[b].id).css("display", "inline-block");
       } else {
-        $('#b' + b).css("display", "none");
+        $('#b' + beers[b].id).css("display", "none");
       }
     }
     /*var category = $(this).val();
