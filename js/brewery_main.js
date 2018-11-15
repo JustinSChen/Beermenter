@@ -6,6 +6,9 @@ $(document).ready(function() {
 
 function loadBeerData() {
   var curBrewery = localStorage.getItem('currentBrewery');
+  if (!curBrewery) {
+    curBrewery = 'Ballast Point Brewing Co.';
+  }
   $(".brewery-header").text(curBrewery);
 
   var beers = ['Ballast Point Brewing Co.']
