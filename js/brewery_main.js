@@ -5,18 +5,33 @@ $(document).ready(function() {
 });
 
 function loadBeerData() {
-  
-  var beerID = 0;
+  var curBrewery = localStorage.getItem('currentBrewery');
+  $(".brewery-header").text(curBrewery);
+
+  var beers = ['Ballast Point Brewing Co.']
+  if (curBrewery in allbeer) {
+    beers = allbeer[curBrewery]
+  }
+  else if (curBrewery == 'Duck Foot' || curBrewery == 'UCI Brewery' || curBrewery == 'San Diego Brewery'){
+    beers = allbeer['Green Flash']
+  }
+
   for (b in beers) {
     var filters = "";
     for (t in beers[b].traits) {
       filters += " " + beers[b].traits[t];
     }
-    $('#' + beers[b].style + 'section').append('<div class="filterDiv beer' + filters + '"><figure><img ' + 'id="beer' + beerID + '" class="beer" src="' + beers[b].img + '" alt="Name of Beer"><figcaption>' + beers[b].name + '</figcaption></figure></div></div>');
-    beerID += 1;
+    $('#' + beers[b].style + 'section').append(
+      '<div class="filterDiv beer' + filters + '">' +
+        '<figure>' +
+          '<img ' + 'id="beer' + beers[b].id + '" class="beer" src="' + beers[b].img + '" alt="Name of Beer">' +
+          '<figcaption>' + beers[b].name + '</figcaption>' +
+        '</figure>' +
+      '</div>'
+    ); //deleted one </div>
   }
 
-  for (var x = 0; x < beerID; x++) {
+  for (x in beers) {
     var bstyle;
     if (beers[x].style == 'ipa') {
       bstyle = 'India Pale Ale';
@@ -33,10 +48,30 @@ function loadBeerData() {
     if (beers[x].style == 'blonde') {
       bstyle = 'Blonde';
     }
-    $('#modals').append('<div id="infoModal' + x + '" class="beer-info-modal"><div class="beer-modal-content"><span class="close">&times;</span><img class="beerinfo" src="' + beers[x].img + '" alt="' + beers[x].name + '"><p class="beername">' + beers[x].name + '</p><p class="beertype">' + bstyle + '</p><p class="abv">' + beers[x].abv + '% Alcohol Content</p><p class="beerdesc">' + beers[x].info + '</p><div id="traits' + x + '"></div><a class="fav-btn"></a></div></div>');
+    $('#modals').append(
+      '<div id="infoModal' + beers[x].id + '" class="beer-info-modal">' +
+        '<div class="beer-modal-content">' + 
+          '<span class="close">&times;</span>' + 
+          '<img class="beerinfo" src="' + beers[x].img + '" alt="' + beers[x].name + '">' + 
+          '<p class="beername">' + beers[x].name + '</p>' +
+          '<p class="beertype">' + bstyle + '</p>' +
+          '<p class="abv">' + beers[x].abv + '% Alcohol Content</p>' +
+          '<p class="beerdesc">' + beers[x].info + '</p>' +
+          '<div id="traits' + beers[x].id + '"></div>' +
+          '<a class="fav-btn"></a>' + 
+        '</div>' +
+      '</div>'
+    );
 
     for (var t = 0; t < beers[x].traits.length; t++) {
-      $("#traits" + x).append('<div class="trait"><label><input type="checkbox" value="1"><span>' + beers[x].traits[t] + '</span></label></div>');
+      $("#traits" + beers[x].id).append(
+          '<div class="trait">' +
+            '<label>' +
+              '<input type="checkbox" value="1">' +
+              '<span>' + beers[x].traits[t] + '</span>' +
+            '</label>' +
+          '</div>'
+        );
     }
   }
 }
@@ -80,8 +115,8 @@ function initializePage() {
   });
 
   $(".fav-btn").click(function() {
-    var beer_id = $(this).parent().parent().attr('id'); //qm1
-    var beer_num = beer_id[beer_id.length - 1];
+    var beer_id = $(this).parent().parent().attr('id').replace(/[^\d]/g, ''); //qm1
+    var beer_num = beer_id;
 
     var user = localStorage.getItem("currentUser");
     var allfavlist = localStorage.getItem("favorite"); //will be JSON later
@@ -117,8 +152,8 @@ function initializePage() {
 
 
   $(".qm").click(function() {
-    var qm_id = $(this).attr('id'); //qm1
-    var qmodal_id = "#qModal" + qm_id[qm_id.length - 1];
+    var qm_id = $(this).attr('id').replace(/[^\d]/g, ''); //qm1
+    var qmodal_id = "#qModal" + qm_id;
     $(qmodal_id).fadeIn();
   });
   $(".qclose").click(function() {
@@ -126,8 +161,8 @@ function initializePage() {
   });
 
   $("img.beer").click(function() {
-    var beer_id = $(this).attr('id'); //qm1
-    var infomodal_id = "#infoModal" + beer_id[beer_id.length - 1];
+    var beer_id = $(this).attr('id').replace(/[^\d]/g, ''); //qm1
+    var infomodal_id = "#infoModal" + beer_id;
     $(infomodal_id).fadeIn();
   });
   $("div.beer-info-modal div .close").click(function() {
@@ -142,4 +177,8 @@ function initializePage() {
 	    $(".sidenav").css("width", "0");
 
 	});
+
+  $("header p").click(function () {
+      window.location.href = "https://maps.google.com/?q=" + $(this).text();
+  }); 
 }

@@ -5,39 +5,72 @@ $(document).ready(function() {
 });
 
 function loadBeerData() {
-    var beerID = 0;
-	for (b in beers) {
-		var filters = "";
-		for (t in beers[b].traits) {
-			filters += " " + beers[b].traits[t];
-		}
-		$('#' + beers[b].style + 'section').append('<div class="filterDiv beer' + filters + '"><figure><img ' + 'id="beer' + beerID + '" class="beer" src="' + beers[b].img + '" alt="Name of Beer"><figcaption>' + beers[b].name + '</figcaption></figure></div></div>');
-		beerID += 1;
-	}
+    var displayed_beer_id = new Set();
+    for (brewery_name in allbeer) {
+    	var beers = allbeer[brewery_name];
 
-	for (var x = 0; x < beerID; x++) {
-		var bstyle;
-		if (beers[x].style == 'ipa') {
-			bstyle = 'India Pale Ale';
-		}
-		if (beers[x].style == 'lager') {
-			bstyle = 'Lager';
-		}
-		if (beers[x].style == 'kolsch') {
-			bstyle = 'Kolsch';
-		}
-		if (beers[x].style == 'porter') {
-			bstyle = 'Porter';
-		}
-		if (beers[x].style == 'blonde') {
-			bstyle = 'Blonde';
-		}
-		$('#modals').append('<div id="infoModal' + x + '" class="beer-info-modal"><div class="beer-modal-content"><span class="close">&times;</span><img class="beerinfo" src="' + beers[x].img + '" alt="' + beers[x].name + '"><p class="beername">' + beers[x].name + '</p><p class="beertype">' + bstyle + '</p><p class="abv">' + beers[x].abv + '% Alcohol Content</p><p class="beerdesc">' + beers[x].info + '</p><div id="traits' + x + '"></div><a class="fav-btn"></a></div></div>');
+		for (b in beers) {
+			if (beers[b].id in displayed_beer_id) {
+				continue;
+			}
+			var filters = "";
+			for (t in beers[b].traits) {
+				filters += " " + beers[b].traits[t];
+			}
+			$('#' + beers[b].style + 'section').append(
+		      '<div class="filterDiv beer' + filters + '">' +
+		        '<figure>' +
+		          '<img ' + 'id="beer' + beers[b].id + '" class="beer" src="' + beers[b].img + '" alt="Name of Beer">' +
+		          '<figcaption>' + beers[b].name + '</figcaption>' +
+		        '</figure>' +
+		      '</div>'
+		    ); //deleted one </div>
 
-		for (var t = 0; t < beers[x].traits.length; t++) {
-			$("#traits" + x).append('<div class="trait"><label><input type="checkbox" value="1"><span>' + beers[x].traits[t] + '</span></label></div>');
+			var bstyle;
+			if (beers[b].style == 'ipa') {
+				bstyle = 'India Pale Ale';
+			}
+			if (beers[b].style == 'lager') {
+				bstyle = 'Lager';
+			}
+			if (beers[b].style == 'kolsch') {
+				bstyle = 'Kolsch';
+			}
+			if (beers[b].style == 'porter') {
+				bstyle = 'Porter';
+			}
+			if (beers[b].style == 'blonde') {
+				bstyle = 'Blonde';
+			}
+			$('#modals').append(
+		      '<div id="infoModal' + beers[b].id + '" class="beer-info-modal">' +
+		        '<div class="beer-modal-content">' + 
+		          '<span class="close">&times;</span>' + 
+		          '<img class="beerinfo" src="' + beers[b].img + '" alt="' + beers[b].name + '">' + 
+		          '<p class="beername">' + beers[b].name + '</p>' +
+		          '<p class="beertype">' + bstyle + '</p>' +
+		          '<p class="abv">' + beers[b].abv + '% Alcohol Content</p>' +
+		          '<p class="beerdesc">' + beers[b].info + '</p>' +
+		          '<div id="traits' + beers[b].id + '"></div>' +
+		          '<a class="fav-btn"></a>' + 
+		        '</div>' +
+		      '</div>'
+		    );
+
+			for (var t = 0; t < beers[b].traits.length; t++) {
+				$("#traits" + beers[b].id).append(
+				  '<div class="trait">' +
+					'<label>' +
+					  '<input type="checkbox" value="1">' +
+					  '<span>' + beers[b].traits[t] + '</span>' +
+					'</label>' +
+				  '</div>'
+				);
+			}
+			
+		    displayed_beer_id.add(beers[b].id);
 		}
-	}
+    }
 }
 
 function loadFavoriteBeers() {

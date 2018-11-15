@@ -27,11 +27,13 @@ div.brewery h3 {
 	font-size: 17px;
 	margin: 0px;
 	font-weight: normal;
+  cursor: pointer;
 }
 div.brewery p {
 	font-family: BrixSansLight;
 	font-size: 13px;
 	margin: 0px;
+  cursor: pointer;
 }
 div.brewery a {
 	width: 100%;
@@ -51,6 +53,7 @@ div.brewery img {
 	font-family: BrixSansBold;
 	font-size: 24pt;
 	font-weight: bold;
+  cursor: pointer;
 }
 .qm {
 	max-width: 20px;
@@ -103,6 +106,7 @@ body {
 body.beer-body {
 	margin: 0;
 	padding: 0;
+  padding-bottom: 32px;
 }
 a {
 	color: white;
@@ -235,7 +239,7 @@ div label input {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     background-color: #010;
@@ -347,7 +351,7 @@ select option {
 }
 
 img.logo {
-  margin: 8px auto 8px auto;
+  margin: 48px auto 16px auto;
   display: block;
   width: 50%;
 }

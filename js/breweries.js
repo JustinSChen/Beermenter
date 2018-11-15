@@ -4,7 +4,7 @@ $(document).ready(function() {
 });
 
 function loadBreweryData() {
-    var locations = new Set();
+    var location_option = new Set();
 	for (b in breweries) {
 		var location = breweries[b].location.toLowerCase();
 		location = location.replace(/\s+/g, '');
@@ -14,17 +14,20 @@ function loadBreweryData() {
 			    '<img src="' + breweries[b].img + '">' +
 			  '</a>' +
 			  '<h3>' + breweries[b].name + '</h3>' +
-			  '<p>' + breweries[b].address + '</p>' +
+			  '<p>' + breweries[b].address + ' &#9755;</p>' +
 		    '</div>'
 		);
 
-		locations.add([location, breweries[b].location]);
+		location_option.add(breweries[b].location);
 	}
 
-	for (l in locations) {
-		$('#locations').append(
-			'<option value="' + l[0] + '">' + l[1] + '</option>'
-		);
+	console.log(location_option.size);
+	for (let l of location_option) {
+		location_class = l.toLowerCase().replace(/\s+/g, '');
+		$('#locations').append($('<option>', {
+		    value: location_class,
+		    text: l
+		}));
 	}
 }
 
@@ -48,6 +51,10 @@ function initializePage() {
 
 	$(".brewery a").click(function () {
 	    localStorage.setItem('currentBrewery', $(this).next().text());
+	});	
+
+	$(".brewery h3, .brewery p").click(function () {
+	    window.location.href = "https://maps.google.com/?q=" + $(this).parent().find("h3").text();
 	});	
 
 }
