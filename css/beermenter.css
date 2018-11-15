@@ -222,7 +222,7 @@ div label input {
 }
 .ck-button label input {
     position:absolute;
-    top:-20px;
+    top:-300px;
     padding: 0;
 }
 .ck-button input:checked + span {
@@ -268,8 +268,13 @@ div label input {
 }
 
 .open-nav {
-    font-size: 30px;
-    cursor: pointer;
+  font-size: 27px;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  overflow-y: auto;
+
 }
 
 .textfield {

@@ -1,7 +1,44 @@
 $(document).ready(function() {
+	loadBeerData();
 	initializePage();
 	loadFavoriteBeers();
 });
+
+function loadBeerData() {
+    var beerID = 0;
+	for (b in beers) {
+		var filters = "";
+		for (t in beers[b].traits) {
+			filters += " " + beers[b].traits[t];
+		}
+		$('#' + beers[b].style + 'section').append('<div class="filterDiv beer' + filters + '"><figure><img ' + 'id="beer' + beerID + '" class="beer" src="' + beers[b].img + '" alt="Name of Beer"><figcaption>' + beers[b].name + '</figcaption></figure></div></div>');
+		beerID += 1;
+	}
+
+	for (var x = 0; x < beerID; x++) {
+		var bstyle;
+		if (beers[x].style == 'ipa') {
+			bstyle = 'India Pale Ale';
+		}
+		if (beers[x].style == 'lager') {
+			bstyle = 'Lager';
+		}
+		if (beers[x].style == 'kolsch') {
+			bstyle = 'Kolsch';
+		}
+		if (beers[x].style == 'porter') {
+			bstyle = 'Porter';
+		}
+		if (beers[x].style == 'blonde') {
+			bstyle = 'Blonde';
+		}
+		$('#modals').append('<div id="infoModal' + x + '" class="beer-info-modal"><div class="beer-modal-content"><span class="close">&times;</span><img class="beerinfo" src="' + beers[x].img + '" alt="' + beers[x].name + '"><p class="beername">' + beers[x].name + '</p><p class="beertype">' + bstyle + '</p><p class="abv">' + beers[x].abv + '% Alcohol Content</p><p class="beerdesc">' + beers[x].info + '</p><div id="traits' + x + '"></div><a class="fav-btn"></a></div></div>');
+
+		for (var t = 0; t < beers[x].traits.length; t++) {
+			$("#traits" + x).append('<div class="trait"><label><input type="checkbox" value="1"><span>' + beers[x].traits[t] + '</span></label></div>');
+		}
+	}
+}
 
 function loadFavoriteBeers() {
 	$(".filterDiv").hide();
@@ -77,7 +114,6 @@ function initializePage() {
     });
 
 	$(".open-nav").click(function () {
-		console.log("Hi");
 	    $(".sidenav").css("width", "250px");
 	});
 

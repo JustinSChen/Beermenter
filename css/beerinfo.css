@@ -95,7 +95,7 @@ figure {
 }
 .trait label input {
     position:absolute;
-    top:-20px;
+    top:-300px;
     padding: 0;
 }
 .beerinfo {
@@ -198,8 +198,3 @@ p.info{
   background-image: url(../img/heart-filled.png);
 }
 
-div.trait label input {
-  position: absolute;
-  top: -100px;
-  left: -100px;
-}
