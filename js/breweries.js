@@ -9,7 +9,7 @@ function loadBreweryData() {
 		var location = breweries[b].location.toLowerCase();
 		location = location.replace(/\s+/g, '');
 		$('.brewery-list').append(
-			'<div class="brewery ' + location + '">' +
+			'<div class="brewery ' + location + '" data-value="' + b + '">' +
 			  '<a href="brewery_main.html">' +
 			    '<img src="' + breweries[b].img + '">' +
 			  '</a>' +
@@ -21,7 +21,6 @@ function loadBreweryData() {
 		location_option.add(breweries[b].location);
 	}
 
-	console.log(location_option.size);
 	for (let l of location_option) {
 		location_class = l.toLowerCase().replace(/\s+/g, '');
 		$('#locations').append($('<option>', {
@@ -51,6 +50,7 @@ function initializePage() {
 
 	$(".brewery a").click(function () {
 	    localStorage.setItem('currentBrewery', $(this).next().text());
+	    localStorage.setItem('currentBreweryIndex', $(this).parent().attr('data-value'));
 	});	
 
 	$(".brewery h3, .brewery p").click(function () {
