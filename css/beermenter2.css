@@ -426,7 +426,7 @@ img.logo {
 }
 /* Add a color to the active/current link */
 .navbar a.active {
-    background-color: #D8844F;
+    background-color: #FFC900;
     color: white;
 }
 #filter {
