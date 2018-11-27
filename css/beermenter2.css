@@ -60,17 +60,6 @@ div.brewery img {
 	max-height:100%;
 	object-fit: contain;
 }
-.brewery-header {
-	background-image: linear-gradient(to right, #FFC900 , #D8844F);
-	text-align: center;
-	padding: 10px;
-	margin: 0 !important;
-	color: #252735;
-	font-family: BrixSansBold;
-	font-size: 24pt;
-	font-weight: bold;
-  cursor: pointer;
-}
 .qm {
 	max-width: 20px;
 	max-height: 20px;
@@ -373,8 +362,46 @@ img.logo {
   width: 50%;
 }
 
+.brewery-header {
+  background-image: linear-gradient(to right, #FFC900 , #D8844F);
+  text-align: center;
+  margin: 0 !important;
+  color: #252735;
+  font-family: BrixSansBold;
+  font-size: 24pt;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+}
+
 .brewery-header-container {
+  background-image: linear-gradient(to right, #FFC900 , #D8844F);
+  text-align: center;
+  margin: 0 !important;
+  color: #252735;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
+}
+.header-dropdown {
+  font-family: BrixSansBold;
+  font-size: 17pt;
+  cursor: pointer;
+  padding: 0px;
+
+    overflow-x: hidden;
+    transition: 0.5s;
+    white-space: nowrap;
+}
+.header-dropdown p {
+  margin: 0px;
+  display:inline-block;
+  transition: 0.3s;
+}
+.header-dropdown i {
+  vertical-align: bottom;
+  height: 27px;
+  cursor: pointer;
+  transition: 0.3s;
 }

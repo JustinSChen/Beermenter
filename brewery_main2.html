@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Beermenter</title>
+    <link rel="icon" href="img/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/beermenter2.css">
+    <link rel="stylesheet" href="css/beerinfo.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  </head>
+
+  <body class="beer-body">
+      <header class="brewery-header-container">
+        <p class="brewery-header"><!-- to be filled --></p>
+        <div class="header-dropdown" style="height: 0px;">
+          <p class="brewery-header-address"><!-- to be filled --></p>
+          <i class="material-icons">place</i>
+        </div>
+      </header>
+
+        <div id="ipasection" class="category">
+          <p class="btype">India Pale Ale <sup><img class="qm" id="qm1" src="img/question.png" alt="Information"></sup></p>
+        </div>
+        <div id="lagersection" class="category">
+          <p class="btype">Lager <sup><img class="qm" id="qm2" src="img/question.png" alt="Information"></sup></p>
+        </div>
+        <div id="kolschsection" class="category">
+          <p class="btype">Kolsch <sup><img class="qm" id="qm3" src="img/question.png" alt="Information"></sup></p>
+        </div>
+        <div id="portersection" class="category">
+          <p class="btype">Porter <sup><img class="qm" id="qm4" src="img/question.png" alt="Information"></sup></p>
+        </div>
+        <div id="blondesection" class="category">
+          <p class="btype">Blonde Ale <sup><img class="qm" id="qm5" src="img/question.png" alt="Information"></sup></p>
+        </div>
+
+      <img id="filter" src="img/filtershadow.png" alt="Filters">
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <details>
+            <summary>Style &#x2295;</summary>
+            <div id="filterContainer">
+              <div class="ck-button">
+                <label>
+                  <input id="f0" class="btn" type="checkbox" value="kolsch" id="filter-kolsch"><span>Kolsch</span>
+                </label>
+              </div>
+              <div class="ck-button">
+                <label>
+                  <input id="f1" class="btn" type="checkbox" value="lager" id="filter-lager"><span>Lager</span>
+                </label>
+              </div>
+              <div class="ck-button">
+                <label>
+                  <input id="f2" class="btn" type="checkbox" value="ipa" id="filter-ipa"><span>India Pale Ale</span>
+                </label>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>Characteristic &#x2295;</summary>
+            <div class="ck-button">
+              <label>
+                <input id="f3" class="btn" type="checkbox" value="crisp" id="filter-crisp"><span>Crisp</span>
+              </label>
+            </div>
+            <div class="ck-button">
+              <label>
+                <input id="f4" class="btn" type="checkbox" value="fruity" id="filter-fruity"><span>Fruity</span>
+              </label>
+            </div>
+            <div class="ck-button">
+              <label>
+                <input id="f5" class="btn" type="checkbox" value="hop" id="filter-hop"><span>Hop</span>
+              </label>
+            </div>
+            <div class="ck-button">
+              <label>
+                <input id="f6" class="btn" type="checkbox" value="malt" id="filter-malt"><span>Malt</span>
+              </label>
+            </div>
+            <div class="ck-button">
+              <label>
+                <input id="f7" class="btn" type="checkbox" value="roasted" id="filter-roasted"><span>Roasted</span>
+              </label>
+            </div>
+            <div class="ck-button">
+              <label>
+                <input id="f8" class="btn" type="checkbox" value="smoky" id="filter-smoky"><span>Smoky</span>
+              </label>
+            </div>
+            <div class="ck-button">
+              <label>
+                <input id="f9" class="btn" type="checkbox" value="tart" id="filter-tart"><span>Tart</span>
+              </label>
+            </div>
+          </details>
+          <details>
+            <summary>Alcohol Content &#x2295;</summary>
+          </details>
+          <button id="finish" class="close">Finish</button>
+        </div>
+
+      </div>
+
+      <div id="modals"></div>
+
+      <div id="qModal1" class="qmodal">
+        <div class="qcontent">
+          <span class="qclose">&times;</span>
+          <p>Characterized by their aroma and bitterness derived from the addition of hops. Hops are flowers that are used in brewing beer, adding a floral bitterness.</p>
+        </div>
+      </div>
+      <div id="qModal2" class="qmodal">
+        <div class="qcontent">
+          <span class="qclose">&times;</span>
+          <p>Fermented low and slow. Lagers are characterized by a much milder hop taste as well as more bready, almost biscuity flavor. </p>
+        </div>
+      </div>
+      <div id="qModal3" class="qmodal">
+        <div class="qcontent">
+          <span class="qclose">&times;</span>
+          <p>Characterized by their slightly fruity flavor profile, Kolsch beers are lighter and cleaner in flavor.</p>
+        </div>
+      </div>
+      <div id="qModal4" class="qmodal">
+        <div class="qcontent">
+          <span class="qclose">&times;</span>
+          <p>A creamy, toasty flavor with little to no hop aroma. These brews employ roasted malts grains and have and rich dark color.</p>
+        </div>
+      </div>
+      <div id="qModal5" class="qmodal">
+        <div class="qcontent">
+          <span class="qclose">&times;</span>
+          <p>Characterized by a moderate bitterness and maltiness/wheaty flavor. Blonde ales tend to be smooth with medium carbonation.</p>
+        </div>
+      </div>
+
+      <div class="sidenav">
+        <a href="#!" class="close-nav">&times;</a>
+        <a href="breweries.html">Choose A Brewery</a>
+        <a href="brewery_main.html">Brewery Main Page</a>
+        <a href="favorite.html">Favorite Page</a>
+        <a href="index.html">Log out</a>
+      </div>
+      <a class="open-nav">&#9776;</a>
+
+      <script src="https://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+      <script type="text/javascript" src="js/brewery_main2.js"></script>
+  </body>
+</html>
